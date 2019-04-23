@@ -34,14 +34,8 @@ public abstract class DatabaseRequest {
 
 	public static void initializeRequests() {
 		try {
-			new RequestListAllTeams();
-			new RequestListTeamByID();
-			new RequestMeetingByID();
-			new RequestRoomsOnDate();
-			new RequestCreateMeeting();
-			new RequestMoveMeetingsToNewRoom();
-			new RequestMeetingsByPurposeAndDate();
-			new RequestCreateSoftwareTeam();
+			new CreateProject();
+			new CreateSprint();
 		} catch (SQLException ex) {
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
