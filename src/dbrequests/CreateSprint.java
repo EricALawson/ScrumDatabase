@@ -18,6 +18,7 @@ public class CreateSprint extends DatabaseRequest {
 		prepStmnt.setString(3, InputValidator.getStartDate());
 		prepStmnt.setString(4, InputValidator.getEndDate());
 		prepStmnt.setString(5, InputValidator.getStatus());
+		prepStmnt.executeUpdate();
 	}
 
 }

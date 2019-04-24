@@ -16,5 +16,6 @@ public class CreateProject extends DatabaseRequest {
 		prepStmnt.setString(1, InputValidator.getProjectName());
 		prepStmnt.setString(2, InputValidator.getStartDate());
 		prepStmnt.setString(3, InputValidator.getEndDate());
+		prepStmnt.executeUpdate();
 	}
 }
