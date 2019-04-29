@@ -32,6 +32,44 @@ public class InputValidator {
 		return id;
 	}
 	
+	public static String getEmployeeID() {
+		System.out.println("Enter the Employee ID: ");
+		String id = keyboard.nextLine();
+		return id;
+	}
+	
+	//Create Story
+	public static String getUserStoryID() {
+		System.out.println("Enter the User Story ID: ");
+		String id = keyboard.nextLine();
+		return id;
+	}
+	
+	public static String getRole() {
+		System.out.println("Enter the role: ");
+		String role = keyboard.nextLine();
+		return role;
+	}
+	
+	public static String getGoal() {
+		System.out.println("Enter the goal: ");
+		String goal = keyboard.nextLine();
+		return goal;
+	}
+	
+	public static String getBenefit() {
+		System.out.println("Enter the benefit: ");
+		String benefit = keyboard.nextLine();
+		return benefit;
+	}
+	
+	public static String getTeamName() {
+		System.out.println("Enter the team name: ");
+		String str = keyboard.nextLine();
+		return str;
+	}
+	
+	
 	public static String getStatus() {
 		while(true) {
 			System.out.println("Choose status\n1) Done\n2) Ongoing\n3) Project backlog");
