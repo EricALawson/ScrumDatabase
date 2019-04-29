@@ -8,7 +8,7 @@ public class CreateProject extends DatabaseRequest {
 	
 	public CreateProject() throws SQLException {
 		description = "Create Project";
-		String sql = "INSERT INTO Projects(?,?,?);";
+		String sql = "INSERT INTO Projects(ProjectName, StartDate, Endate) VALUES (?,?,?);";
 		prepStmnt = conn.prepareStatement(sql);
 	}
 
