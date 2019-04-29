@@ -34,14 +34,8 @@ public abstract class DatabaseRequest {
 
 	public static void initializeRequests() {
 		try {
-			new RequestListAllTeams();
-			new RequestListTeamByID();
-			new RequestMeetingByID();
-			new RequestRoomsOnDate();
-			new RequestCreateMeeting();
-			new RequestMoveMeetingsToNewRoom();
-			new RequestMeetingsByPurposeAndDate();
-			new RequestCreateSoftwareTeam();
+			new CreateProject();
+			new CreateSprint();
 		} catch (SQLException ex) {
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
@@ -56,6 +50,33 @@ public abstract class DatabaseRequest {
 		int numberCols = rsmd.getColumnCount();
 		for (int i = 1; i <= numberCols; i++) {
 			System.out.print(rsmd.getColumnLabel(i) + "\t\t");
+		}
+		System.out.println("\n---------------------------");
+		while (results.next()) {
+			for (int i = 1; i <= rsmd.getColumnCount(); i ++) {
+				if (i > 1) System.out.print(",\t\t");
+				String colValue = results.getString(i);
+				System.out.print(colValue);
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+	//still working on this -izzy
+	/**
+	 * will format the resultset using system.out.format()
+	 */
+	protected void formatResultSet(ResultSet results) throws SQLException {
+		ResultSetMetaData rsmd = results.getMetaData();
+		int numberCols = rsmd.getColumnCount();
+		String[] colNum = new String[numberCols];
+		for (int i = 0; i < numberCols; i++) {
+			// Adds column names to the array
+			colNum[i] = rsmd.getColumnName(i + 1);
+			String tableName = rsmd.getTableName(i);
+			ResultSet rs = conn.executeQuery("SELECT MAX(LENGTH(" + rsmd.getColumnName(i + 1) + ")) from " + tableName);
+			ResultSetMetaData rsmd2= rs.getMetaData();
+			
 		}
 		System.out.println("\n---------------------------");
 		while (results.next()) {
