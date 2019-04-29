@@ -8,7 +8,7 @@ public class CreateManagement extends DatabaseRequest {
 
 	public CreateManagement() throws SQLException {
 		description = "Create Management";
-		String sql = "INSERT INTO ManagementMembers(?, ?);";
+		String sql = "INSERT INTO ManagementMembers(ProjectName, EmployeeID) VALUES (?, ?);";
 		prepStmnt = conn.prepareStatement(sql);
 	}
 	

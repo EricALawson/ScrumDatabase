@@ -8,7 +8,7 @@ public class CreateStory extends DatabaseRequest {
 
 	public CreateStory() throws SQLException {
 		description = "Create Story";
-		String sql = "INSERT INTO UserStories(?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO UserStories(USID, ProjectName, Role, Goal, Benefit) VALUES (?, ?, ?, ?, ?);";
 		prepStmnt = conn.prepareStatement(sql);
 	}
 	
