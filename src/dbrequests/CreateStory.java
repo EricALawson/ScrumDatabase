@@ -20,5 +20,6 @@ public class CreateStory extends DatabaseRequest {
 		prepStmnt.setString(5, InputValidator.getBenefit());
 		prepStmnt.executeUpdate();
 	}
+	
 
 }
