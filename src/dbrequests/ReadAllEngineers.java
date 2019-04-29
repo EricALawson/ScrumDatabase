@@ -1,6 +1,8 @@
 package dbrequests;
 
+
 import java.sql.SQLException;
+import util.InputValidator;
 
 public class ReadAllEngineers extends DatabaseRequest {
 
@@ -11,7 +13,7 @@ public class ReadAllEngineers extends DatabaseRequest {
 	}
 	
 	public void execute() throws SQLException {
-		prepStmnt.executeUpdate();
+		prepStmnt.executeQuery();
 	}
 
 }
