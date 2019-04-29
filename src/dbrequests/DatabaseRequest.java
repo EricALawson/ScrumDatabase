@@ -74,8 +74,8 @@ public abstract class DatabaseRequest {
 			// Adds column names to the array
 			colNum[i] = rsmd.getColumnName(i + 1);
 			String tableName = rsmd.getTableName(i);
-			ResultSet rs = conn.executeQuery("SELECT MAX(LENGTH(" + rsmd.getColumnName(i + 1) + ")) from " + tableName);
-			ResultSetMetaData rsmd2= rs.getMetaData();
+//			ResultSet rs = conn.executeUpdate("SELECT MAX(LENGTH(" + rsmd.getColumnName(i + 1) + ")) from " + tableName);
+//			ResultSetMetaData rsmd2= rs.getMetaData();
 			
 		}
 		System.out.println("\n---------------------------");
