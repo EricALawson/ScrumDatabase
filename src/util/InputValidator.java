@@ -1,6 +1,7 @@
 package util;
 
 import java.sql.Date;
+
 import java.util.Scanner;
 
 public class InputValidator {
