@@ -53,6 +53,8 @@ public class UpdateSprintTeamMember extends DatabaseRequest{
 			prepStmnt.setString(2, InputValidator.getEmployeeID());
 		else if (findColumn == "SprintID")
 			prepStmnt.setString(2, InputValidator.getSprintID());
+		
+		prepStmnt.executeUpdate();
 	}
 
 }

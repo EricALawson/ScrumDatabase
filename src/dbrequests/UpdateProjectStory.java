@@ -67,6 +67,7 @@ public class UpdateProjectStory extends DatabaseRequest{
 		else if (findColumn == "Benefit")
 			prepStmnt.setString(2, InputValidator.getBenefit());
 		
+		prepStmnt.executeUpdate();
 	}
 	
 }
