@@ -48,7 +48,7 @@ public class UpdateManagement extends DatabaseRequest{
 		else if (findColumn == "EmployeeID")
 			prepStmnt.setString(2, InputValidator.getEmployeeID());
 		
-		
+		prepStmnt.executeUpdate();
 	}
 
 }
