@@ -2,7 +2,7 @@ package dbrequests;
 
 import java.sql.SQLException;
 
-public class DeleteManagement extends DatabaseRequest{
+public class DeleteProjectStory extends DatabaseRequest{
 
 	@Override
 	public void execute() throws SQLException {
