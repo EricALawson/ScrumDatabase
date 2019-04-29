@@ -1,5 +1,6 @@
 package dbrequests;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ReadTeams extends DatabaseRequest{
@@ -11,6 +12,8 @@ public class ReadTeams extends DatabaseRequest{
 	}
 	
 	public void execute() throws SQLException {
+		ResultSet rows_affected = prepStmnt.executeQuery();
+		printResultSet(rows_affected);
 		prepStmnt.executeQuery();
 	}
 }
