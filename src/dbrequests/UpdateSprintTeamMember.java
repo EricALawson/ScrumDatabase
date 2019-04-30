@@ -6,17 +6,13 @@ import java.util.Scanner;
 import util.InputValidator;
 
 public class UpdateSprintTeamMember extends DatabaseRequest{
-	private String setColumn;
-	private String findColumn;
+
 	private static Scanner keyboard = new Scanner(System.in);
 	
 	public UpdateSprintTeamMember() throws SQLException{
 		description = "Update Sprint Team Member";
-		System.out.println("Which column do you want to update?");
-		setColumn = setSprintTeamMemberCols();
-		System.out.println("Which column do you want to set a condition under?");
-		findColumn = setSprintTeamMemberCols();
-		String sql = "UPDATE SprintTeamMembers SET SprintTeamMembers." + setColumn + " = ? WHERE SprintTeamMembers." + findColumn + " = ?;";
+		
+		String sql = "";
 		prepStmnt = conn.prepareStatement(sql);
 	}
 	
@@ -38,6 +34,18 @@ public class UpdateSprintTeamMember extends DatabaseRequest{
 	}
 	@Override
 	public void execute() throws SQLException {
+		String setColumn, findColumn;
+		
+		System.out.println("Which column do you want to update?");
+		setColumn = setSprintTeamMemberCols();
+		System.out.println("Which column do you want to set a condition under?");
+		findColumn = setSprintTeamMemberCols();
+		
+		
+		String sql = "UPDATE SprintTeamMembers SET SprintTeamMembers." + setColumn + " = ? WHERE SprintTeamMembers." + findColumn + " = ?;";
+		prepStmnt = conn.prepareStatement(sql);
+		
+		
 		// TODO Auto-generated method stub
 		if (setColumn == "TeamName")
 			prepStmnt.setString(1, InputValidator.getProjectName());

@@ -6,18 +6,11 @@ import java.util.Scanner;
 import util.InputValidator;
 
 public class UpdateProjectStory extends DatabaseRequest{
-	private String setColumn;
-	private String findColumn;
 	private static Scanner keyboard = new Scanner(System.in);
 	
 	public UpdateProjectStory() throws SQLException{
 		description = "Update Project Story";
-		System.out.println("Which column do you want to update?");
-		setColumn = setProjectStoryCols();
-		System.out.println("Which column do you want to set a condition under?");
-		findColumn = setProjectStoryCols();
-		String sql = "UPDATE UserStories INNER JOIN SprintStories ON UserStories.USID = SprintStories.USID SET UserStories."
-		+ setColumn + " = ? WHERE SprintStories.SprintID IS NOT NULL AND UserStories." + findColumn + " = ?;";
+		String sql = "";
 		prepStmnt = conn.prepareStatement(sql);
 	}
 	
@@ -42,6 +35,17 @@ public class UpdateProjectStory extends DatabaseRequest{
 	}
 	@Override
 	public void execute() throws SQLException {
+		String setColumn;
+		String findColumn;
+		System.out.println("Which column do you want to update?");
+		setColumn = setProjectStoryCols();
+		System.out.println("Which column do you want to set a condition under?");
+		findColumn = setProjectStoryCols();
+
+		String sql = "UPDATE UserStories INNER JOIN SprintStories ON UserStories.USID = SprintStories.USID SET UserStories."
+		+ setColumn + " = ? WHERE SprintStories.SprintID IS NOT NULL AND UserStories." + findColumn + " = ?;";
+		prepStmnt = conn.prepareStatement(sql);
+		
 		// TODO Auto-generated method stub
 		System.out.println("What is the update value?");
 		if (setColumn == "USID")
@@ -67,6 +71,7 @@ public class UpdateProjectStory extends DatabaseRequest{
 		else if (findColumn == "Benefit")
 			prepStmnt.setString(2, InputValidator.getBenefit());
 		
+
 		prepStmnt.executeUpdate();
 	}
 	

@@ -5,17 +5,11 @@ import java.util.Scanner;
 
 import util.InputValidator;
 public class UpdateManagement extends DatabaseRequest{
-	private String setColumn;
-	private String findColumn;
 	private static Scanner keyboard = new Scanner(System.in);
 	
 	public UpdateManagement() throws SQLException{
-		System.out.println("Which column do you want to update?");
-		setColumn = setManagementCols();
-		System.out.println("Which column do you want to set a condition under?");
-		findColumn = setManagementCols();
 		description = "Update Management";
-		String sql = "UPDATE ManagementMembers SET ManagementMembers." + setColumn + " = ? WHERE ManagementMembers." + findColumn + " = ?;";
+		String sql = "";
 		prepStmnt = conn.prepareStatement(sql);
 	}
 	
@@ -35,7 +29,16 @@ public class UpdateManagement extends DatabaseRequest{
 	
 	@Override
 	public void execute() throws SQLException {
-		// TODO Auto-generated method stub
+		String setColumn;
+		String findColumn;
+		System.out.println("Which column do you want to update?");
+		setColumn = setManagementCols();
+		System.out.println("Which column do you want to set a condition under?");
+		findColumn = setManagementCols();
+		
+		String sql = "UPDATE ManagementMembers SET ManagementMembers." + setColumn + " = ? WHERE ManagementMembers." + findColumn + " = ?;";
+		prepStmnt = conn.prepareStatement(sql);
+		
 		System.out.println("What is the update value?");
 		if (setColumn == "ProjectName")
 			prepStmnt.setString(1, InputValidator.getProjectName());
@@ -47,7 +50,7 @@ public class UpdateManagement extends DatabaseRequest{
 			prepStmnt.setString(2, InputValidator.getProjectName());
 		else if (findColumn == "EmployeeID")
 			prepStmnt.setString(2, InputValidator.getEmployeeID());
-		
+				
 		prepStmnt.executeUpdate();
 	}
 
