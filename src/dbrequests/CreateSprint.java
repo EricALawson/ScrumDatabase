@@ -8,7 +8,7 @@ public class CreateSprint extends DatabaseRequest {
 
 	public CreateSprint() throws SQLException {
 		description = "Create Sprint";
-		String sql = "INSERT INTO Sprints(?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO Sprints VALUES(?, ?, ?, ?, ?);";
 		prepStmnt = conn.prepareStatement(sql);
 	}
 	

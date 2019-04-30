@@ -36,6 +36,22 @@ public abstract class DatabaseRequest {
 		try {
 			new CreateProject();
 			new CreateSprint();
+			new CreateManagement();
+			new CreateSprintMember();
+			new CreateStory();
+			new CreateTeamMember();
+			new DeleteManagement();
+			new DeleteProjectStory();
+			new DeleteSprintTeamMember();
+			new InsertSprintStory();
+			new ReadAllEngineers();
+			new ReadProjectSprints();
+			new ReadProjectStories();
+			new ReadTeamMembers();
+			new ReadTeams();
+			new UpdateManagement();
+			new UpdateProjectStory();
+			new UpdateSprintTeamMember();
 		} catch (SQLException ex) {
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
