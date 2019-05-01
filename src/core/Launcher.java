@@ -8,7 +8,11 @@ import java.sql.Statement;
 import dbrequests.DatabaseRequest;
 
 public class Launcher {
+<<<<<<< HEAD
 	private static String dbURL1 = "jdbc:mysql://192.168.56.101:3306/SCRUMTeams?useSSL=false&serverTimezone=UTC";
+=======
+	private static String dbURL1 = "jdbc:mysql://192.168.109.133:3306/testSCRUM?useSSL=false&serverTimezone=UTC";	
+>>>>>>> refs/remotes/origin/izzys_laptop
 	private static String userName = "cecs323b";
 	private static String password = "cecs323";
 	private static Connection conn1 = null;
