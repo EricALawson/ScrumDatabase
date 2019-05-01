@@ -6,12 +6,14 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Statement;
 
 public abstract class DatabaseRequest {
 	private static ArrayList<DatabaseRequest> allRequests = new ArrayList<>();
 	protected static Connection conn;
-	
-	protected PreparedStatement prepStmnt;
+	protected static Statement stmnt;
+	protected static PreparedStatement prepStmnt;
+	//protected PreparedStatement prepStmnt;
 	protected String description;
 
 	public DatabaseRequest() {
