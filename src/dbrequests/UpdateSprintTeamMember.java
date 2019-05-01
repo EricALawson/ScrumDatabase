@@ -11,7 +11,6 @@ public class UpdateSprintTeamMember extends DatabaseRequest{
 	
 	public UpdateSprintTeamMember() throws SQLException{
 		description = "Update Sprint Team Member";
-		
 		String sql = "";
 		prepStmnt = conn.prepareStatement(sql);
 	}
@@ -45,8 +44,6 @@ public class UpdateSprintTeamMember extends DatabaseRequest{
 		String sql = "UPDATE SprintTeamMembers SET SprintTeamMembers." + setColumn + " = ? WHERE SprintTeamMembers." + findColumn + " = ?;";
 		prepStmnt = conn.prepareStatement(sql);
 		
-		
-		// TODO Auto-generated method stub
 		if (setColumn == "TeamName")
 			prepStmnt.setString(1, InputValidator.getProjectName());
 		else if (setColumn == "EmployeeID")

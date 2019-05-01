@@ -46,7 +46,6 @@ public class UpdateProjectStory extends DatabaseRequest{
 		+ setColumn + " = ? WHERE SprintStories.SprintID IS NOT NULL AND UserStories." + findColumn + " = ?;";
 		prepStmnt = conn.prepareStatement(sql);
 		
-		// TODO Auto-generated method stub
 		System.out.println("What is the update value?");
 		if (setColumn == "USID")
 			prepStmnt.setString(1, InputValidator.getUserStoryID());

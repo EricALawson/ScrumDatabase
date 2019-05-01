@@ -39,6 +39,7 @@ public class UpdateManagement extends DatabaseRequest{
 		String sql = "UPDATE ManagementMembers SET ManagementMembers." + setColumn + " = ? WHERE ManagementMembers." + findColumn + " = ?;";
 		prepStmnt = conn.prepareStatement(sql);
 		
+		
 		System.out.println("What is the update value?");
 		if (setColumn == "ProjectName")
 			prepStmnt.setString(1, InputValidator.getProjectName());
