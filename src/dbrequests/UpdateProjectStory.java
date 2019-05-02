@@ -11,7 +11,6 @@ public class UpdateProjectStory extends DatabaseRequest{
 	public UpdateProjectStory() throws SQLException{
 		description = "Update Project Story";
 		String sql = "";
-		prepStmnt = conn.prepareStatement(sql);
 	}
 	
 	public static String setProjectStoryCols() {

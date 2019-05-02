@@ -12,7 +12,6 @@ public class UpdateSprintTeamMember extends DatabaseRequest{
 	public UpdateSprintTeamMember() throws SQLException{
 		description = "Update Sprint Team Member";
 		String sql = "";
-		prepStmnt = conn.prepareStatement(sql);
 	}
 	
 	public static String setSprintTeamMemberCols() {

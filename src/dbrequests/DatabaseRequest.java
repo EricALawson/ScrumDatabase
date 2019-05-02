@@ -12,10 +12,7 @@ import java.sql.ResultSet;
 public abstract class DatabaseRequest {
 	private static ArrayList<DatabaseRequest> allRequests = new ArrayList<>();
 	protected static Connection conn;
-	protected static Statement stmnt;
-	protected static PreparedStatement prepStmnt;
-	protected static ResultSet resultSet;
-	//protected PreparedStatement prepStmnt;
+	protected PreparedStatement prepStmnt;
 	protected String description;
 
 	public DatabaseRequest() {

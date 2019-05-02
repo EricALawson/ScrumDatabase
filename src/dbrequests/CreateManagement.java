@@ -1,6 +1,7 @@
 package dbrequests;
 
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 import util.InputValidator;
 
@@ -15,7 +16,11 @@ public class CreateManagement extends DatabaseRequest {
 	public void execute() throws SQLException {
 		prepStmnt.setString(1, InputValidator.getProjectName());
 		prepStmnt.setString(2, InputValidator.getEmployeeID());
-		prepStmnt.executeUpdate();
+		int updated = prepStmnt.executeUpdate();
+		if (updated > 0) {
+			System.out.println(updated + " rows were created.");
+		}
+
 	}
 
 }

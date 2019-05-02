@@ -9,8 +9,6 @@ public class UpdateManagement extends DatabaseRequest{
 	
 	public UpdateManagement() throws SQLException{
 		description = "Update Management";
-		String sql = "";
-		prepStmnt = conn.prepareStatement(sql);
 	}
 	
 	public static String setManagementCols() {
