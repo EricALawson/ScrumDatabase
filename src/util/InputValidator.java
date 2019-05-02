@@ -90,7 +90,7 @@ public class InputValidator {
 		return str;
 	}
 	
-		public static String getManagementColumn() {
+	public static String getManagementColumn() {
 		while (true) {
 			System.out.println("Choose column: ");
 			System.out.println("1) Project Name");
