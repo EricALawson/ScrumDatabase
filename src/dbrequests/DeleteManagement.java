@@ -1,6 +1,7 @@
 package dbrequests;
 
 import java.sql.SQLException;
+import util.InputValidator;
 
 public class DeleteManagement extends DatabaseRequest{
 	
