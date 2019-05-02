@@ -90,5 +90,56 @@ public class InputValidator {
 		return str;
 	}
 	
+		public static String getManagementColumn() {
+		while (true) {
+			System.out.println("Choose column: ");
+			System.out.println("1) Project Name");
+			System.out.println("2) Employee ID");
+			String option = keyboard.nextLine();
+			switch(option) {
+			case "1": return "ProjectName";
+			case "2": return "EmployeeID";
+			default: System.out.println("Invalid input");
+			}
+		}
+	}
+	
+	public static String getProjectStoryColumn() {
+		while (true) {
+			System.out.println("Choose column: ");
+			System.out.println("1) User Story ID");
+			System.out.println("2) Project Name");
+			System.out.println("3) Role");
+			System.out.println("4) Goal");
+			System.out.println("5) Benefit");
+			String option = keyboard.nextLine();
+			switch(option) {
+			case "1": return "USID";
+			case "2": return "ProjectName";
+			case "3": return "Role";
+			case "4": return "Goal";
+			case "5": return "Benefit";
+			default: System.out.println("Invalid input");
+			}
+		}
+	}
+	
+	public static String getSprintTeamMemberColumn() {
+		while (true) {
+			System.out.println("Choose column: ");
+			System.out.println("1) Team Name");
+			System.out.println("2) Employee ID");
+			System.out.println("3) Sprint ID");
+			String option = keyboard.nextLine();
+			switch(option) {
+			case "1": return "USID";
+			case "2": return "ProjectName";
+			case "3": return "Role";
+			case "4": return "Goal";
+			case "5": return "Benefit";
+			default: System.out.println("Invalid input");
+			}
+		}
+	}
 
 }
