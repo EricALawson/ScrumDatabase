@@ -1,27 +1,37 @@
 package dbrequests;
 
-import util.InputValidator;
-
 import java.sql.SQLException;
 
 public class DeleteManagement extends DatabaseRequest{
-
-	public DeleteManagement() throws SQLException {
-		description = "Delete a management member";
-		String sql = "DELETE FROM ManagementMembers WHERE ManagementMembers.EmployeeID = ?;";
-		prepStmnt = conn.prepareStatement(sql);
+	
+	public DeleteManagement() {
+		description = "Remove Engineer from Project Management";
 	}
-
+	
 	@Override
 	public void execute() throws SQLException {
-		prepStmnt.setString(1, InputValidator.getEmployeeID());
-		int deleted = prepStmnt.executeUpdate();
-		if (deleted > 0) {
-			System.out.println(deleted + "management member was deleted");
-		} else {
-			System.out.println("Failure: No matching management member found");
+		String findColumn = InputValidator.getManagementColumn();
+		String findCondition;
+		if (findColumn = "ProjectName") {
+			findCondition = InputValidator.getProjectName();
 		}
+		else if (findColumn = "EmployeeID") {
+			findCondition = InputValidator.getEmployeeID();
+		}
+		String sql = "DELETE FROM ManagementMembers WHERE ManagementMembers." + findColumn + " = ?;";
+		prepStmnt = conn.prepareStatement(sql);
+		prepStmnt.setString(1, findCondition);
 		
+		int rows_affected = prepStmnt.executeUpdate();
+		
+		if (rows_affected > 0) {
+			System.out.println("Success: " + rows_affected + " rows affected.");
+		} else if (rows_affected == 0) {
+			System.out.println("Failure: " + rows_affected + " rows affected.");
+		}
+		else {
+			System.out.printlm("Error: " + rows_affected + " rows affected.");
+		}
 	}
 
 }
