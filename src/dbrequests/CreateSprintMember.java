@@ -21,16 +21,20 @@ public class CreateSprintMember extends DatabaseRequest{
 		
 		//InputValidator.
 		
-		prepStmnt.setString(1, InputValidator.getTeamName());
-		prepStmnt.setString(2, InputValidator.getSprintID());
-		prepStmnt.setString(3, InputValidator.getEmployeeID());
+		String TeamName = InputValidator.getTeamName();
+		String SprintID = InputValidator.getSprintID();
+		String EmployeeID = InputValidator.getEmployeeID();
+		prepStmnt.setString(1, TeamName);
+		prepStmnt.setString(2, SprintID);
+		prepStmnt.setString(3, EmployeeID);
 		prepStmnt.executeQuery();
 		
-		String updateSQL = "INSERT INTO SprintTeamMembers  (TeamName,SprintID,EmployeeID) VALUES(?,?,?)";
+		String updateSQL = "SELECT * FROM SprintTeamMembers";
 		
-		/*prints all the user input*/
-		ResultSet result = prepStmnt.executeQuery(updateSQL);
-		printResultSet(result);
+	
+		/*prints user input*/
+		System.out.println("Sprint Member Created");
+		System.out.println("TeamMemberName: " + TeamName + "\tEmployeeID: " + EmployeeID + "\tSprintID: " + SprintID);
 		
 		
 		
