@@ -12,11 +12,11 @@ public class DeleteManagement extends DatabaseRequest{
 	@Override
 	public void execute() throws SQLException {
 		String findColumn = InputValidator.getManagementColumn();
-		String findCondition;
-		if (findColumn = "ProjectName") {
+		String findCondition = "";
+		if (findColumn == "ProjectName") {
 			findCondition = InputValidator.getProjectName();
 		}
-		else if (findColumn = "EmployeeID") {
+		else if (findColumn == "EmployeeID") {
 			findCondition = InputValidator.getEmployeeID();
 		}
 		String sql = "DELETE FROM ManagementMembers WHERE ManagementMembers." + findColumn + " = ?;";
@@ -31,7 +31,7 @@ public class DeleteManagement extends DatabaseRequest{
 			System.out.println("Failure: " + rows_affected + " rows affected.");
 		}
 		else {
-			System.out.printlm("Error: " + rows_affected + " rows affected.");
+			System.out.println("Error: " + rows_affected + " rows affected.");
 		}
 	}
 

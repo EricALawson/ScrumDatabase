@@ -132,11 +132,9 @@ public class InputValidator {
 			System.out.println("3) Sprint ID");
 			String option = keyboard.nextLine();
 			switch(option) {
-			case "1": return "USID";
-			case "2": return "ProjectName";
-			case "3": return "Role";
-			case "4": return "Goal";
-			case "5": return "Benefit";
+			case "1": return "TeamName";
+			case "2": return "EmployeeID";
+			case "3": return "SprintID";
 			default: System.out.println("Invalid input");
 			}
 		}

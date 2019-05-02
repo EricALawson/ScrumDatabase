@@ -30,27 +30,37 @@ public class UpdateManagement extends DatabaseRequest{
 		String setColumn;
 		String findColumn;
 		System.out.println("Which column do you want to update?");
-		setColumn = setManagementCols();
+		setColumn = InputValidator.getManagementColumn();
 		System.out.println("Which column do you want to set a condition under?");
-		findColumn = setManagementCols();
+		findColumn = InputValidator.getManagementColumn();
 		
 		String sql = "UPDATE ManagementMembers SET ManagementMembers." + setColumn + " = ? WHERE ManagementMembers." + findColumn + " = ?;";
 		prepStmnt = conn.prepareStatement(sql);
 		
 		
-		System.out.println("What is the update value?");
+		System.out.println("Enter the update value to set ManagementMembers." + setColumn + " = ?:");
 		if (setColumn == "ProjectName")
 			prepStmnt.setString(1, InputValidator.getProjectName());
 		else if (setColumn == "EmployeeID")
 			prepStmnt.setString(1, InputValidator.getEmployeeID());
 		
-		System.out.println("What is the condition value?");
+		System.out.println("Enter the condition value where ManagementMembers." + findColumn + " = ?:");
 		if (findColumn == "ProjectName")
 			prepStmnt.setString(2, InputValidator.getProjectName());
 		else if (findColumn == "EmployeeID")
 			prepStmnt.setString(2, InputValidator.getEmployeeID());
 				
-		prepStmnt.executeUpdate();
+		int rowsAffected = prepStmnt.executeUpdate();
+		
+		if (rowsAffected > 0) {
+			System.out.println("Success: " + rowsAffected + " rows affected.");
+		} 
+		else if (rowsAffected == 0) {
+			System.out.println("Failure: " + rowsAffected + " rows affected.");
+		}
+		else {
+			System.out.println("Error: " + rowsAffected + " rows affected.");
+		}
 	}
 
 }
