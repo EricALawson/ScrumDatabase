@@ -13,8 +13,14 @@ public class CreateTeamMember extends DatabaseRequest {
 	}
 	
 	public void execute() throws SQLException {
-		prepStmnt.setString(1, InputValidator.getTeamName());
-		prepStmnt.setString(2, InputValidator.getEmployeeID());
+		String TeamName = InputValidator.getTeamName();
+		String EmployeeID = InputValidator.getEmployeeID();
+		prepStmnt.setString(1, TeamName);
+		prepStmnt.setString(2, EmployeeID);
 		prepStmnt.executeUpdate();
+		
+		System.out.println("New Team Member Created");
+		System.out.println("Team Member Name: " + TeamName + "\tEmploye ID: " + EmployeeID);
+
 	}
 }
