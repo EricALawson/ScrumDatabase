@@ -34,7 +34,7 @@ public class CreateSprintMember extends DatabaseRequest{
 	
 		/*prints user input*/
 		System.out.println("Sprint Member Created");
-		System.out.println("TeamMemberName: " + TeamName + "\tEmployeeID: " + EmployeeID + "\tSprintID: " + SprintID);
+		System.out.println("Team Name: " + TeamName + "\tEmployeeID: " + EmployeeID + "\tSprintID: " + SprintID);
 		
 		
 		
