@@ -13,12 +13,26 @@ public class CreateSprint extends DatabaseRequest {
 	}
 	
 	public void execute() throws SQLException {
-		prepStmnt.setString(1, InputValidator.getProjectName());
-		prepStmnt.setString(2, InputValidator.getSprintID());
-		prepStmnt.setString(3, InputValidator.getStartDate());
-		prepStmnt.setString(4, InputValidator.getEndDate());
-		prepStmnt.setString(5, InputValidator.getStatus());
+		String ProjectName = InputValidator.getProjectName();
+		String SprintID = InputValidator.getSprintID();
+		String StartDate = InputValidator.getStartDate();
+		String EndDate = InputValidator.getEndDate();
+		String Status = InputValidator.getStatus();
+		prepStmnt.setString(1, ProjectName);
+		prepStmnt.setString(2, SprintID);
+		prepStmnt.setString(3, StartDate);
+		prepStmnt.setString(4, EndDate);
+		prepStmnt.setString(5, Status);
 		prepStmnt.executeUpdate();
+		
+		System.out.println("New Sprint has been created");
+		System.out.println("Project Name = " + ProjectName);
+		System.out.println("Sprint ID = " + SprintID);
+		System.out.println("Start Date = " + StartDate);
+		System.out.println("End Date = " + EndDate);
+		System.out.println("Status = " + Status);
+		
+		
 	}
 
 }
