@@ -1,12 +1,14 @@
 package dbrequests;
 
 import util.InputValidator;
+
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class ReadProjectSprints extends DatabaseRequest {
 	
 	public ReadProjectSprints() throws SQLException {
-		description = "Read All Project Engineers";
+		description = "Read All Sprints in project";
 		String sql = "SELECT Projects.ProjectName, Sprints.SprintID, Sprints.StartDate, Sprints.EndDate, Sprints.Status"
 				+ " FROM Projects INNER JOIN Sprints ON Sprints.ProjectName = Projects.ProjectName WHERE Projects.ProjectName = ?;";
 		prepStmnt = conn.prepareStatement(sql);
@@ -14,7 +16,8 @@ public class ReadProjectSprints extends DatabaseRequest {
 	
 	public void execute() throws SQLException {
 		prepStmnt.setString(1, InputValidator.getProjectName());
-		prepStmnt.executeQuery();
+		ResultSet rs = prepStmnt.executeQuery();
+		printResultSet(rs);
 	}
 	
 }

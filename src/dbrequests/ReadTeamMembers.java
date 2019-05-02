@@ -3,6 +3,7 @@ package dbrequests;
 import java.sql.SQLException;
 
 import util.InputValidator;
+import java.sql.ResultSet;
 
 public class ReadTeamMembers extends DatabaseRequest{
 
@@ -23,7 +24,8 @@ public class ReadTeamMembers extends DatabaseRequest{
 	
 	public void execute() throws SQLException {
 		prepStmnt.setString(1, InputValidator.getProjectName());
-		prepStmnt.executeQuery();
+		ResultSet rs = prepStmnt.executeQuery();
+		printResultSet(rs);
 	}
 	
 }

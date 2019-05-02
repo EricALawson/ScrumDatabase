@@ -66,14 +66,14 @@ public abstract class DatabaseRequest {
 		ResultSetMetaData rsmd = results.getMetaData();
 		int numberCols = rsmd.getColumnCount();
 		for (int i = 1; i <= numberCols; i++) {
-			System.out.print(rsmd.getColumnLabel(i) + "\t\t");
+			System.out.printf("%-25s",rsmd.getColumnLabel(i));
 		}
 		System.out.println("\n---------------------------");
 		while (results.next()) {
 			for (int i = 1; i <= rsmd.getColumnCount(); i ++) {
-				if (i > 1) System.out.print(",\t\t");
+				//if (i > 1) System.out.print(",\t\t");
 				String colValue = results.getString(i);
-				System.out.print(colValue);
+				System.out.printf("%-25s",colValue);
 			}
 			System.out.println();
 		}

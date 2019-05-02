@@ -1,6 +1,9 @@
 package dbrequests;
 
+import util.InputValidator;
+
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class ReadProjectStories extends DatabaseRequest{
 
@@ -18,7 +21,8 @@ public class ReadProjectStories extends DatabaseRequest{
 
 	@Override
 	public void execute() throws SQLException {
-		
-		
+		prepStmnt.setString(1, InputValidator.getProjectName());
+		ResultSet rs = prepStmnt.executeQuery();
+		printResultSet(rs);
 	}
 }
