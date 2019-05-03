@@ -15,16 +15,14 @@ public class DeleteProjectStory extends DatabaseRequest{
 	@Override
 	public void execute() throws SQLException {
 		prepStmnt.setString(1, InputValidator.getUserStoryID());
-        int rows_affected = prepStmnt.executeUpdate();
 
-        if (rows_affected > 0) {
-            System.out.println("Success: " + rows_affected + " rows affected.");
-        } else if (rows_affected == 0) {
-            System.out.println("Failure: " + rows_affected + " rows affected.");
-        }
-        else {
-            System.out.println("Error: " + rows_affected + " rows affected.");
-        }
+	int removed = prepStmnt.executeUpdate();
+
+	if (removed > 0) {
+		System.out.println("Success: " + removed + " rows deleted");
+	} else {
+		System.out.println("Now matching team members were found.");
+	}
 	}
 
 }
