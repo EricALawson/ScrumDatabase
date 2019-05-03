@@ -14,13 +14,18 @@ public class CreateManagement extends DatabaseRequest {
 	}
 	
 	public void execute() throws SQLException {
-		prepStmnt.setString(1, InputValidator.getProjectName());
-		prepStmnt.setString(2, InputValidator.getEmployeeID());
-		int updated = prepStmnt.executeUpdate();
-		if (updated > 0) {
-			System.out.println(updated + " rows were created.");
+			prepStmnt.setString(1, InputValidator.getProjectName());
+			prepStmnt.setString(2, InputValidator.getEmployeeID());
+		try {
+			int updated = prepStmnt.executeUpdate();
+			if (updated > 0) {
+				System.out.println(updated + " rows were created.");
+			}
 		}
-
+		catch (SQLIntegrityConstraintViolationException e){
+			System.out.println("Error: Duplicate entry or TeamName is not in SCRUMTeams table or EmployeeID is not in SoftwareEngineers table.");
+			System.out.println(e);
+		}
 	}
 
 }
