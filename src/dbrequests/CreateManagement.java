@@ -23,7 +23,7 @@ public class CreateManagement extends DatabaseRequest {
 			}
 		}
 		catch (SQLIntegrityConstraintViolationException e){
-			System.out.println("Error: Duplicate entry or TeamName is not in SCRUMTeams table or EmployeeID is not in SoftwareEngineers table.");
+			System.out.println("Error: ");
 			System.out.println(e);
 		}
 	}
