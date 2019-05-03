@@ -24,15 +24,22 @@ public class CreateSprint extends DatabaseRequest {
 		prepStmnt.setString(4, EndDate);
 		prepStmnt.setString(5, Status);
 		
-		int rows_affected = prepStmnt.executeUpdate();
+		try {
+			int rows_affected = prepStmnt.executeUpdate();
 
-		if (rows_affected > 0) {
-		    System.out.println("Success: " + rows_affected + " rows affected.");
-		} else if (rows_affected == 0) {
-		    System.out.println("Failure: " + rows_affected + " rows affected.");
+			if (rows_affected > 0) {
+			    System.out.println("Success: " + rows_affected + " rows affected.");
+			} else if (rows_affected == 0) {
+			    System.out.println("Failure: " + rows_affected + " rows affected.");
+			}
+			else {
+			    System.out.println("Error: " + rows_affected + " rows affected.");
+			}
 		}
-		else {
-		    System.out.println("Error: " + rows_affected + " rows affected.");
+		
+		catch (SQLIntegrityConstraintViolationException e){
+			System.out.println("Error: ");
+			System.out.println(e);
 		}
 		
 		
