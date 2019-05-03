@@ -25,15 +25,21 @@ public class CreateStory extends DatabaseRequest {
 		prepStmnt.setString(4, Goal);
 		prepStmnt.setString(5, Benefit);
 		
-		int rows_affected = prepStmnt.executeUpdate();
+		try {
+			int rows_affected = prepStmnt.executeUpdate();
 
-		if (rows_affected > 0) {
-		    System.out.println("Success: " + rows_affected + " rows affected.");
-		} else if (rows_affected == 0) {
-		    System.out.println("Failure: " + rows_affected + " rows affected.");
+			if (rows_affected > 0) {
+			    System.out.println("Success: " + rows_affected + " rows affected.");
+			} else if (rows_affected == 0) {
+			    System.out.println("Failure: " + rows_affected + " rows affected.");
+			}
+			else {
+			    System.out.println("Error: " + rows_affected + " rows affected.");
+			}
 		}
-		else {
-		    System.out.println("Error: " + rows_affected + " rows affected.");
+		catch (SQLIntegrityConstraintViolationException e){
+			System.out.println("Error: Duplicate Entry or TeamName/EmployeeID not in SCRUMTeamMembers");
+			System.out.println(e);
 		}
 	}
 	
