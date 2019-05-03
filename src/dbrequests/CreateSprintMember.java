@@ -10,7 +10,7 @@ public class CreateSprintMember extends DatabaseRequest{
 	
 	public CreateSprintMember() throws SQLException {
 		description = "Create Sprint Member";
-		String updateSQL = "INSERT INTO SprintTeamMembers  (TeamName,SprintID,EmployeeID) VALUES(?,?,?)";
+		String updateSQL = "INSERT INTO SprintTeamMembers(TeamName,SprintID,EmployeeID) VALUES(?,?,?)";
 		prepStmnt = conn.prepareStatement(updateSQL);
 		
 		
@@ -27,14 +27,18 @@ public class CreateSprintMember extends DatabaseRequest{
 		prepStmnt.setString(1, TeamName);
 		prepStmnt.setString(2, SprintID);
 		prepStmnt.setString(3, EmployeeID);
-		prepStmnt.executeQuery();
-		
-		String updateSQL = "SELECT * FROM SprintTeamMembers";
-		
 	
 		/*prints user input*/
-		System.out.println("Sprint Member Created");
-		System.out.println("Team Name: " + TeamName + "\tEmployeeID: " + EmployeeID + "\tSprintID: " + SprintID);
+		int rows_affected = prepStmnt.executeUpdate();
+
+		if (rows_affected > 0) {
+		    System.out.println("Success: " + rows_affected + " rows affected.");
+		} else if (rows_affected == 0) {
+		    System.out.println("Failure: " + rows_affected + " rows affected.");
+		}
+		else {
+		    System.out.println("Error: " + rows_affected + " rows affected.");
+		}
 		
 		
 		
