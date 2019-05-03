@@ -15,12 +15,16 @@ public class DeleteProjectStory extends DatabaseRequest{
 	@Override
 	public void execute() throws SQLException {
 		prepStmnt.setString(1, InputValidator.getUserStoryID());
-		int deleted = prepStmnt.executeUpdate();
-		if (deleted > 0) {
-			System.out.println(deleted + " user story was deleted");
-		} else {
-			System.out.println("Failure: No matching user story found");
-		}
+        int rows_affected = prepStmnt.executeUpdate();
+
+        if (rows_affected > 0) {
+            System.out.println("Success: " + rows_affected + " rows affected.");
+        } else if (rows_affected == 0) {
+            System.out.println("Failure: " + rows_affected + " rows affected.");
+        }
+        else {
+            System.out.println("Error: " + rows_affected + " rows affected.");
+        }
 	}
 
 }
