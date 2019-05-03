@@ -22,7 +22,7 @@ public class DeleteSprintTeamMember extends DatabaseRequest{
 		if (removed > 0) {
 			System.out.println("Success: " + removed + " rows deleted");
 		} else {
-			System.out.println("Now matching team members were found.");
+			System.out.println("No matching team members were found.");
 		}
 		
 	}
