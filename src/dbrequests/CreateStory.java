@@ -38,7 +38,7 @@ public class CreateStory extends DatabaseRequest {
 			}
 		}
 		catch (SQLIntegrityConstraintViolationException e){
-			System.out.println("Error: Duplicate Entry or TeamName/EmployeeID not in SCRUMTeamMembers");
+			System.out.println("Error: ");
 			System.out.println(e);
 		}
 	}
