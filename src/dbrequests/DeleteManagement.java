@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DeleteManagement extends DatabaseRequest{
 
 	public DeleteManagement() {
-		description = "Remove Engineer from Project Management";
+		description = "Delete Engineer from Project Management";
 	}
 
 	@Override
