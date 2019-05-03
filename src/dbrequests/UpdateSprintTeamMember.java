@@ -1,64 +1,62 @@
 package dbrequests;
 
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import util.InputValidator;
 
 public class UpdateSprintTeamMember extends DatabaseRequest{
 
-	private static Scanner keyboard = new Scanner(System.in);
-	
 	public UpdateSprintTeamMember() throws SQLException{
 		description = "Update Sprint Team Member";
-		String sql = "";
+
 	}
 	
-	public static String setSprintTeamMemberCols() {
-		while (true) {
-			System.out.println("Choose column: ");
-			System.out.println("1) Team Name");
-			System.out.println("2) Employee ID");
-			System.out.println("3) Sprint ID");
-			
-			int option = keyboard.nextInt();
-			switch(option) {
-			case 1: return "TeamName";
-			case 2: return "EmployeeID";
-			case 3: return "SprintID";
-			default: System.out.println("Invalid input");
-			}
-		}
-	}
 	@Override
 	public void execute() throws SQLException {
 		String setColumn, findColumn;
 		
 		System.out.println("Which column do you want to update?");
-		setColumn = setSprintTeamMemberCols();
+		setColumn = InputValidator.getSprintTeamMemberColumn();
 		System.out.println("Which column do you want to set a condition under?");
-		findColumn = setSprintTeamMemberCols();
+		findColumn = InputValidator.getSprintTeamMemberColumn();
 		
 		
 		String sql = "UPDATE SprintTeamMembers SET SprintTeamMembers." + setColumn + " = ? WHERE SprintTeamMembers." + findColumn + " = ?;";
 		prepStmnt = conn.prepareStatement(sql);
 		
+		System.out.println("Enter the update value to set SprintTeamMembers." + setColumn + " = ?: ");
 		if (setColumn == "TeamName")
-			prepStmnt.setString(1, InputValidator.getProjectName());
+			prepStmnt.setString(1, InputValidator.getTeamName());
 		else if (setColumn == "EmployeeID")
 			prepStmnt.setString(1, InputValidator.getEmployeeID());
 		else if (setColumn == "SprintID")
 			prepStmnt.setString(1, InputValidator.getSprintID());
 		
-		System.out.println("What is the condition value?");
-		if (findColumn == "ProjectName")
-			prepStmnt.setString(2, InputValidator.getProjectName());
+		System.out.println("Enter the condition value where SprintTeamMembers." + findColumn + " = ?: ");
+		if (findColumn == "TeamName")
+			prepStmnt.setString(2, InputValidator.getTeamName());
 		else if (findColumn == "EmployeeID")
 			prepStmnt.setString(2, InputValidator.getEmployeeID());
 		else if (findColumn == "SprintID")
 			prepStmnt.setString(2, InputValidator.getSprintID());
 		
-		prepStmnt.executeUpdate();
+		try {
+			int rowsAffected = prepStmnt.executeUpdate();
+			
+	        if (rowsAffected > 0) {
+	            System.out.println("Success: " + rowsAffected + " rows affected.");
+	        } else if (rowsAffected == 0) {
+	            System.out.println("Failure: " + rowsAffected + " rows affected.");
+	        }
+	        else {
+	            System.out.println("Error: " + rowsAffected + " rows affected.");
+	        }
+		}
+		catch (SQLIntegrityConstraintViolationException e){
+			System.out.println("Error: Duplicate Entry or TeamName/EmployeeID not in SCRUMTeamMembers");
+			System.out.println(e);
+		}
 	}
 
 }
