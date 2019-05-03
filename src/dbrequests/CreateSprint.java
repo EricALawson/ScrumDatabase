@@ -23,14 +23,17 @@ public class CreateSprint extends DatabaseRequest {
 		prepStmnt.setString(3, StartDate);
 		prepStmnt.setString(4, EndDate);
 		prepStmnt.setString(5, Status);
-		prepStmnt.executeUpdate();
 		
-		System.out.println("New Sprint has been created");
-		System.out.println("Project Name = " + ProjectName);
-		System.out.println("Sprint ID = " + SprintID);
-		System.out.println("Start Date = " + StartDate);
-		System.out.println("End Date = " + EndDate);
-		System.out.println("Status = " + Status);
+		int rows_affected = prepStmnt.executeUpdate();
+
+		if (rows_affected > 0) {
+		    System.out.println("Success: " + rows_affected + " rows affected.");
+		} else if (rows_affected == 0) {
+		    System.out.println("Failure: " + rows_affected + " rows affected.");
+		}
+		else {
+		    System.out.println("Error: " + rows_affected + " rows affected.");
+		}
 		
 		
 	}
