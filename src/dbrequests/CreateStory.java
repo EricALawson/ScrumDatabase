@@ -24,14 +24,17 @@ public class CreateStory extends DatabaseRequest {
 		prepStmnt.setString(3, Role);
 		prepStmnt.setString(4, Goal);
 		prepStmnt.setString(5, Benefit);
-		prepStmnt.executeUpdate();
 		
-		System.out.println("New User Story Created");
-		System.out.println("User Story ID: " + UserStoryID);
-		System.out.println("Project Name: " + ProjectName);
-		System.out.println("Role: " + Role);
-		System.out.println("Goal: " + Goal);
-		System.out.println("Benefit: " + Benefit);
+		int rows_affected = prepStmnt.executeUpdate();
+
+		if (rows_affected > 0) {
+		    System.out.println("Success: " + rows_affected + " rows affected.");
+		} else if (rows_affected == 0) {
+		    System.out.println("Failure: " + rows_affected + " rows affected.");
+		}
+		else {
+		    System.out.println("Error: " + rows_affected + " rows affected.");
+		}
 	}
 	
 
