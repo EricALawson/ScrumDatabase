@@ -16,13 +16,19 @@ public class DeleteProjectStory extends DatabaseRequest{
 	public void execute() throws SQLException {
 		prepStmnt.setString(1, InputValidator.getUserStoryID());
 
-	int removed = prepStmnt.executeUpdate();
-
-	if (removed > 0) {
-		System.out.println("Success: " + removed + " rows deleted");
-	} else {
-		System.out.println("Now matching team members were found.");
+	try{
+		int removed = prepStmnt.executeUpdate();
+		if (removed > 0) {
+			System.out.println("Success: " + removed + " rows deleted");
+		} else {
+			System.out.println("Now matching team members were found.");
+		}
 	}
+	catch (SQLIntegrityConstraintViolationException e){
+		System.out.println("Error: ");
+		System.out.println(e);
+	}
+		
 	}
 
 }
