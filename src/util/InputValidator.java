@@ -74,11 +74,11 @@ public class InputValidator {
 	public static String getStatus() {
 		while(true) {
 			System.out.println("Choose status\n1) Done\n2) Ongoing\n3) Project backlog");
-			int option = Integer.parseInt(keyboard.nextLine());
+			String option = keyboard.nextLine();
 			switch(option) {
-			case 1: return "Done";
-			case 2: return "Ongoing";
-			case 3: return "Project backlog";
+			case "1": return "Done";
+			case "2": return "Ongoing";
+			case "3": return "Project backlog";
 			}
 			System.out.println("Invalid input");
 		}
@@ -132,11 +132,9 @@ public class InputValidator {
 			System.out.println("3) Sprint ID");
 			String option = keyboard.nextLine();
 			switch(option) {
-			case "1": return "USID";
-			case "2": return "ProjectName";
-			case "3": return "Role";
-			case "4": return "Goal";
-			case "5": return "Benefit";
+			case "1": return "TeamName";
+			case "2": return "EmployeeID";
+			case "3": return "SprintID";
 			default: System.out.println("Invalid input");
 			}
 		}
