@@ -1,51 +1,32 @@
 package dbrequests;
 
 import java.sql.SQLException;
-import java.util.Scanner;
-
+import java.sql.SQLIntegrityConstraintViolationException;
 import util.InputValidator;
+import java.sql.PreparedStatement;
 
 public class UpdateProjectStory extends DatabaseRequest{
-	private static Scanner keyboard = new Scanner(System.in);
 	
 	public UpdateProjectStory() throws SQLException{
 		description = "Update Project Story";
-		String sql = "";
 	}
 	
-	public static String setProjectStoryCols() {
-		while (true) {
-			System.out.println("Choose column: ");
-			System.out.println("1) User Story ID");
-			System.out.println("2) Project Name");
-			System.out.println("3) Role");
-			System.out.println("4) Goal");
-			System.out.println("5) Benefit");
-			int option = keyboard.nextInt();
-			switch(option) {
-			case 1: return "USID";
-			case 2: return "ProjectName";
-			case 3: return "Role";
-			case 4: return "Goal";
-			case 5: return "Benefit";
-			default: System.out.println("Invalid input");
-			}
-		}
-	}
 	@Override
 	public void execute() throws SQLException {
+		PreparedStatement statement = conn.prepareStatement("SELECT * FROM UserStories;");
+		statement.executeQuery();
 		String setColumn;
 		String findColumn;
 		System.out.println("Which column do you want to update?");
-		setColumn = setProjectStoryCols();
+		setColumn = InputValidator.getProjectStoryColumn();
 		System.out.println("Which column do you want to set a condition under?");
-		findColumn = setProjectStoryCols();
+		findColumn = InputValidator.getProjectStoryColumn();
 
 		String sql = "UPDATE UserStories INNER JOIN SprintStories ON UserStories.USID = SprintStories.USID SET UserStories."
 		+ setColumn + " = ? WHERE SprintStories.SprintID IS NOT NULL AND UserStories." + findColumn + " = ?;";
 		prepStmnt = conn.prepareStatement(sql);
 		
-		System.out.println("What is the update value?");
+		System.out.println("Enter the update value to set UserStories." + setColumn + " = ?: ");
 		if (setColumn == "USID")
 			prepStmnt.setString(1, InputValidator.getUserStoryID());
 		else if (setColumn == "ProjectName")
@@ -57,7 +38,7 @@ public class UpdateProjectStory extends DatabaseRequest{
 		else if (setColumn == "Benefit")
 			prepStmnt.setString(1, InputValidator.getBenefit());
 		
-		System.out.println("What is the condition value?");
+		System.out.println("Enter the condition value where UserStories." + findColumn + " = ?: ");
 		if (findColumn == "USID")
 			prepStmnt.setString(2, InputValidator.getUserStoryID());
 		else if (findColumn == "ProjectName")
@@ -69,8 +50,22 @@ public class UpdateProjectStory extends DatabaseRequest{
 		else if (findColumn == "Benefit")
 			prepStmnt.setString(2, InputValidator.getBenefit());
 		
-
-		prepStmnt.executeUpdate();
+		try {
+			int rowsAffected = prepStmnt.executeUpdate();
+			
+	        if (rowsAffected > 0) {
+	            System.out.println("Success: " + rowsAffected + " rows affected.");
+	        } else if (rowsAffected == 0) {
+	            System.out.println("Failure: " + rowsAffected + " rows affected.");
+	        }
+	        else {
+	            System.out.println("Error: " + rowsAffected + " rows affected.");
+	        }
+		}
+		catch (SQLIntegrityConstraintViolationException e){
+			System.out.println("Error: Duplicate Entry in table.");
+			System.out.println(e);
+		}
 	}
 	
 }
