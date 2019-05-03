@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DeleteSprintTeamMember extends DatabaseRequest{
 
 	public DeleteSprintTeamMember() throws SQLException{
-		description = "Remove a member from a sprint";
+		description = "Delete a member from a sprint";
 		String sql = "DELETE from SprintTeamMembers WHERE TeamName = ? AND EmployeeID = ? AND SprintID = ?;";
 		prepStmnt = conn.prepareStatement(sql);
 	}
