@@ -16,18 +16,25 @@ public class CreateProject extends DatabaseRequest {
 		String ProjectName = InputValidator.getProjectName();
 		String StartDate = InputValidator.getStartDate();
 		String EndDate = InputValidator.getEndDate();
-		prepStmnt.setString(1, ProjectName);
-		prepStmnt.setString(2, StartDate);
-		prepStmnt.setString(3, EndDate);
-		int rows_affected = prepStmnt.executeUpdate();
-
-		if (rows_affected > 0) {
-		    System.out.println("Success: " + rows_affected + " rows affected.");
-		} else if (rows_affected == 0) {
-		    System.out.println("Failure: " + rows_affected + " rows affected.");
+		
+		try{
+			prepStmnt.setString(1, ProjectName);
+			prepStmnt.setString(2, StartDate);
+			prepStmnt.setString(3, EndDate);
+			int rows_affected = prepStmnt.executeUpdate();
+			if (rows_affected > 0) {
+			    System.out.println("Success: " + rows_affected + " rows affected.");
+			} else if (rows_affected == 0) {
+			    System.out.println("Failure: " + rows_affected + " rows affected.");
+			}
+			else {
+			    System.out.println("Error: " + rows_affected + " rows affected.");
+			}
 		}
-		else {
-		    System.out.println("Error: " + rows_affected + " rows affected.");
+		catch (SQLIntegrityConstraintViolationException e){
+			System.out.println("Error: ");
+			System.out.println(e);
 		}
+		
 	}
 }
