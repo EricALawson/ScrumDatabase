@@ -19,10 +19,17 @@ public class CreateTeamMember extends DatabaseRequest {
 		try {
 			prepStmnt.setString(1, TeamName);
 			prepStmnt.setString(2, EmployeeID);
-			prepStmnt.executeUpdate();
 			
-			System.out.println("New Team Member Created");
-			System.out.println("Team Member Name: " + TeamName + "\tEmployee ID: " + EmployeeID);
+			int rows_affected = prepStmnt.executeUpdate();
+
+			if (rows_affected > 0) {
+			    System.out.println("Success: " + rows_affected + " rows affected.");
+			} else if (rows_affected == 0) {
+			    System.out.println("Failure: " + rows_affected + " rows affected.");
+			}
+			else {
+			    System.out.println("Error: " + rows_affected + " rows affected.");
+			}
 		}
 		catch (SQLIntegrityConstraintViolationException e){
 			System.out.println("Error: Duplicate entry or TeamName is not in SCRUMTeams table or EmployeeID is not in SoftwareEngineers table.");
