@@ -15,15 +15,21 @@ public class InsertSprintStory extends DatabaseRequest {
 		prepStmnt.setString(1, InputValidator.getUserStoryID());
 		prepStmnt.setString(2, InputValidator.getSprintID());
 		
-		int rows_affected = prepStmnt.executeUpdate();
+		try{
+			int rows_affected = prepStmnt.executeUpdate();
 
-		if (rows_affected > 0) {
-		    System.out.println("Success: " + rows_affected + " rows affected.");
-		} else if (rows_affected == 0) {
-		    System.out.println("Failure: " + rows_affected + " rows affected.");
+			if (rows_affected > 0) {
+			    System.out.println("Success: " + rows_affected + " rows affected.");
+			} else if (rows_affected == 0) {
+			    System.out.println("Failure: " + rows_affected + " rows affected.");
+			}
+			else {
+			    System.out.println("Error: " + rows_affected + " rows affected.");
+			}
 		}
-		else {
-		    System.out.println("Error: " + rows_affected + " rows affected.");
+		catch (SQLIntegrityConstraintViolationException e){
+			System.out.println("Error: ");
+			System.out.println(e);
 		}
-		}
+	}
 }
