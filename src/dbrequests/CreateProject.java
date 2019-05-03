@@ -19,11 +19,15 @@ public class CreateProject extends DatabaseRequest {
 		prepStmnt.setString(1, ProjectName);
 		prepStmnt.setString(2, StartDate);
 		prepStmnt.setString(3, EndDate);
-		prepStmnt.executeUpdate();
-		
-		System.out.println("New  Project Has Been Created");
-		System.out.println("Project Name = " + ProjectName);
-		System.out.println("Start Date = " + StartDate);
-		System.out.println("End Date = " + EndDate);
+		int rows_affected = prepStmnt.executeUpdate();
+
+		if (rows_affected > 0) {
+		    System.out.println("Success: " + rows_affected + " rows affected.");
+		} else if (rows_affected == 0) {
+		    System.out.println("Failure: " + rows_affected + " rows affected.");
+		}
+		else {
+		    System.out.println("Error: " + rows_affected + " rows affected.");
+		}
 	}
 }
