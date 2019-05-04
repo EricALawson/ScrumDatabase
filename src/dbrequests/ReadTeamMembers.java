@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class ReadTeamMembers extends DatabaseRequest{
 
 	public ReadTeamMembers() throws SQLException {
-		description = "Read All Team Members";
+		description = "Read Team Members of a Project";
 		String sql = "SELECT SCRUMTeamMembers.EmployeeID, SoftwareEngineers.FirstName, SoftwareEngineers.LastName,"
 				+ " SoftwareEngineers.PhoneNumber, SoftwareEngineers.Email, SoftwareEngineers.HireDate" + 
 				" FROM Projects" + 
