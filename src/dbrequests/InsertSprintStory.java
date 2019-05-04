@@ -2,6 +2,7 @@ package dbrequests;
 
 import java.sql.SQLException;
 import util.InputValidator;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class InsertSprintStory extends DatabaseRequest {
 	public InsertSprintStory() throws SQLException{
