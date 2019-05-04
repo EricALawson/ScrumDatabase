@@ -8,7 +8,7 @@ import util.InputValidator;
 public class CreateTeamMember extends DatabaseRequest {
 
 	public CreateTeamMember() throws SQLException {
-		description = "Create Team Member";
+		description = "Create a SCRUM Team Member";
 		String sql = "INSERT INTO SCRUMTeamMembers(TeamName, EmployeeID) VALUES (?, ?);";
 		prepStmnt = conn.prepareStatement(sql);
 	}
