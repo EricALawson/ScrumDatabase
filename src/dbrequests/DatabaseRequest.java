@@ -38,9 +38,9 @@ public abstract class DatabaseRequest {
 			new CreateProject();
 			new CreateSprint();
 			new CreateManagement();
+			new CreateTeamMember();
 			new CreateSprintMember();
 			new CreateStory();
-			new CreateTeamMember();
 			new DeleteManagement();
 			new DeleteProjectStory();
 			new DeleteSprintTeamMember();
