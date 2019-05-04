@@ -46,6 +46,7 @@ public abstract class DatabaseRequest {
 			new DeleteSprintTeamMember();
 			new InsertSprintStory();
 			new ReadAllEngineers();
+			new ReadSprintEngineers();
 			new ReadProjectSprints();
 			new ReadProjectStories();
 			new ReadTeamMembers();
