@@ -6,7 +6,7 @@ import util.InputValidator;
 
 public class ReadSprintEngineers extends DatabaseRequest {
 	public ReadSprintEngineers() throws SQLException {
-		description = "Read All Sprint Engineers";
+		description = "Read Sprint Engineers of a Sprint";
 		String sql = "SELECT SCRUMTeams.TeamName, SCRUMTeamMembers.EmployeeID, SoftwareEngineers.FirstName,"
 				+ " SoftwareEngineers.LastName, SoftwareEngineers.PhoneNumber, SoftwareEngineers.Email, SoftwareEngineers.HireDate"
 				+ " FROM Projects"
