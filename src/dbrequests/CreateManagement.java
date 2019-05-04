@@ -2,6 +2,7 @@ package dbrequests;
 
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import util.InputValidator;
 
