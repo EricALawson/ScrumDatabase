@@ -1,7 +1,7 @@
 package dbrequests;
 
 import java.sql.SQLException;
-
+import java.sql.SQLIntegrityConstraintViolationException;
 import util.InputValidator;
 
 public class CreateSprint extends DatabaseRequest {
