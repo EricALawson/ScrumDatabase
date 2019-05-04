@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class ReadProjectStories extends DatabaseRequest{
 
 	public ReadProjectStories() throws SQLException {
-		description = "Read Project Stories";
+		description = "Read User Stories of a Project";
 		String sql = "SELECT UserStories.USID, UserStories.Role, UserStories.Goal, UserStories.Benefit" + 
 				" FROM Projects" + 
 				" INNER JOIN UserStories" + 
